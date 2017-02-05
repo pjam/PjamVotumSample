@@ -39,6 +39,11 @@ class Shopware_Plugins_Frontend_PjamVotumSample_Bootstrap extends Shopware_Compo
         $metaDataCache->deleteAll();
         Shopware()->Models()->generateAttributeModels(['s_user_attributes']);
 
+        $this->subscribeEvent(
+            'Enlight_Controller_Action_PostDispatchSecure_Frontend',
+            'addTemplateDir'
+        );
+
         return true;
     }
 
@@ -57,5 +62,10 @@ class Shopware_Plugins_Frontend_PjamVotumSample_Bootstrap extends Shopware_Compo
         Shopware()->Models()->generateAttributeModels(['s_user_attributes']);
 
         return true;
+    }
+
+    public function addTemplateDir()
+    {
+        Shopware()->Container()->get('template')->addTemplateDir($this->Path() . 'Views/');
     }
 }
