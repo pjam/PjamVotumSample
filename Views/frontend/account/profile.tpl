@@ -13,9 +13,14 @@
     </div>*}
 
     <div class="panel--body">
-        <strong>Votum customer number</strong>
+        <strong>{s name='AccountLabelVotumCustomerNumber'
+            namespace="frontend/plugins/account/profile"}Votum customer number{/s}</strong>
         <div class="profile--votum-customer-number">
-            {$sUserData.additional.user.votum_customer_number|escape}
+            {if $sUserData.additional.user.votum_customer_number}
+                {$sUserData.additional.user.votum_customer_number|escape}
+            {else}
+                ---
+            {/if}
         </div>
     </div>
 

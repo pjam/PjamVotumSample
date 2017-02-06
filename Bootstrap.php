@@ -64,6 +64,7 @@ class Shopware_Plugins_Frontend_PjamVotumSample_Bootstrap extends Shopware_Compo
         return true;
     }
 
+    // add the template files from the plugin
     public function addTemplateDir()
     {
         Shopware()->Container()->get('template')->addTemplateDir($this->Path() . 'Views/');

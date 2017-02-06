@@ -7,7 +7,8 @@
         <input autocomplete="section-personal votum-customer-number"
                name="register[personal][attribute][votumCustomerNumber]"
                type="text"
-               placeholder="Votum Customer Number"
+               placeholder="{s name='RegisterPlaceholderVotumCustomerNumber'
+               namespace="frontend/plugins/register/personal_fieldset"}Votum Customer Number{/s}"
                id="votumcustomernumber"
                value="{$form_data.attribute.votumCustomerNumber|escape}"
                class="register--field{if $errorFlags.votumCustomerNumber} has--error{/if}"
