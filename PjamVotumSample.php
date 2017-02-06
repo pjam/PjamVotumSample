@@ -10,7 +10,7 @@ use Shopware\Components\Plugin\Context\UninstallContext;
 /**
  * Shopware-Plugin pjamVotumSample.
  */
-class PjamVotumSamplea extends Plugin
+class PjamVotumSample extends Plugin
 {
 
     /**
@@ -48,6 +48,27 @@ class PjamVotumSamplea extends Plugin
         Shopware()->Models()->generateAttributeModels(['s_user_attributes']);
 
         return true;
+
+        /*
+         $this->subscribeEvent(
+            'Enlight_Controller_Action_PostDispatchSecure_Backend_Customer',
+            'onCustomerPostDispatch'
+        );
+
+        public function onCustomerPostDispatch(Enlight_Event_EventArgs $args)
+    {
+        / ** @var \Enlight_Controller_Action $controller * /
+        $controller = $args->getSubject();
+        $view = $controller->View();
+        $request = $controller->Request();
+
+        $view->addTemplateDir($this->Path() . '/Views');
+
+        if ($request->getActionName() == 'load') {
+            $view->extendsTemplate('backend/pjam_votum_sample/customer/view/detail/window.js');
+        }
+    }
+         */
     }
 
     /**
