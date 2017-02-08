@@ -36,9 +36,7 @@ class PjamVotumSample extends Plugin
         // inserts (if it does not exists) the field "votum_customer_number" with type "string"
         // into table "s_user_attributes"
         $service->update('s_user_attributes', 'votum_customer_number', 'string', [
-            'label' => 'Votum Customer Number',
-            'translatable' => true,
-            'displayInBackend' => true
+            'label' => 'Votum Customer Number'
         ]);
 
         // rebuild attribute models (recommended
@@ -48,27 +46,6 @@ class PjamVotumSample extends Plugin
         Shopware()->Models()->generateAttributeModels(['s_user_attributes']);
 
         return true;
-
-        /*
-         $this->subscribeEvent(
-            'Enlight_Controller_Action_PostDispatchSecure_Backend_Customer',
-            'onCustomerPostDispatch'
-        );
-
-        public function onCustomerPostDispatch(Enlight_Event_EventArgs $args)
-    {
-        / ** @var \Enlight_Controller_Action $controller * /
-        $controller = $args->getSubject();
-        $view = $controller->View();
-        $request = $controller->Request();
-
-        $view->addTemplateDir($this->Path() . '/Views');
-
-        if ($request->getActionName() == 'load') {
-            $view->extendsTemplate('backend/pjam_votum_sample/customer/view/detail/window.js');
-        }
-    }
-         */
     }
 
     /**
