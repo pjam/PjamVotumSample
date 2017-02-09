@@ -24,17 +24,19 @@ Ext.define('Shopware.apps.PjamVotumSample.view.detail.Base', {
 
         me.callParent(arguments);
 
-        Ext.Ajax.request({
-            url: '{url controller=AttributeData action=loadData}',
-            params: {
-                _foreignKey: me.record.get('id'),
-                _table: 's_user_attributes'
-            },
-            success: function(responseData, request) {
-                var response = Ext.JSON.decode(responseData.responseText);
-                me.votumCustomerNumberField.setValue(response.data['__attribute_votum_customer_number']);
-            }
-        });
+        if (me.record.get('id')) {
+            Ext.Ajax.request({
+                url: '{url controller=AttributeData action=loadData}',
+                params: {
+                    _foreignKey: me.record.get('id'),
+                    _table: 's_user_attributes'
+                },
+                success: function (responseData, request) {
+                    var response = Ext.JSON.decode(responseData.responseText);
+                    me.votumCustomerNumberField.setValue(response.data['__attribute_votum_customer_number']);
+                }
+            });
+        }
     }
 });
 //{/block}
