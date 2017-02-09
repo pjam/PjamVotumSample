@@ -21,8 +21,10 @@ class Backend implements SubscriberInterface
         $view = $controller->View();
         $request = $controller->Request();
 
+        // tell the application where the templates are
         $view->addTemplateDir(__DIR__ . '/../Resources/views');
 
+        // insert the plugin's components overrides
         if ($request->getActionName() == 'load') {
             $view->extendsTemplate('backend/pjam_votum_sample/customer/view/detail/base.js');
             $view->extendsTemplate('backend/pjam_votum_sample/customer/controller/detail.js');

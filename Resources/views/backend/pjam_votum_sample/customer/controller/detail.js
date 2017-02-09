@@ -92,6 +92,8 @@ Ext.define('Shopware.apps.PjamVotumSample.controller.Detail', {
 
                         win.attributeForm.saveAttribute(record.get('id'));
 
+                        // at this point, the customer object already exists, so we can use its id to update the
+                        // corresponding attribute
                         Ext.Ajax.request({
                             method: 'POST',
                             url: '{url controller=AttributeData action=saveData}',

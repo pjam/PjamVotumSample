@@ -12,6 +12,6 @@
                id="votumcustomernumber"
                value="{$form_data.attribute.votumCustomerNumber|escape}"
                class="register--field{if $errorFlags.votumCustomerNumber} has--error{/if}"
-                />
+        />
     </div>
 {/block}

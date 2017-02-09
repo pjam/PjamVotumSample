@@ -7,6 +7,7 @@ Ext.define('Shopware.apps.PjamVotumSample.view.detail.Base', {
         var me = this,
             elements = me.callParent(arguments);
 
+        // create the form field to hold the attribute data
         me.votumCustomerNumberField = Ext.create('Ext.form.field.Text', {
             xtype: 'textfield',
             name: 'votum_customer_number',
@@ -14,6 +15,7 @@ Ext.define('Shopware.apps.PjamVotumSample.view.detail.Base', {
             fieldLabel: 'Votum Customer Number',
         });
 
+        // add the field to the fieldset container
         elements.push(me.votumCustomerNumberField);
 
         return elements;
@@ -24,6 +26,9 @@ Ext.define('Shopware.apps.PjamVotumSample.view.detail.Base', {
 
         me.callParent(arguments);
 
+        // if the customer exists, fetch the attribute data from the db and fills the corresponding form field with
+        // its value (based on
+        // https://developers.shopware.com/developers-guide/attribute-system/#add-your-field-and-load-the-data)
         if (me.record.get('id')) {
             Ext.Ajax.request({
                 url: '{url controller=AttributeData action=loadData}',
